@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_electron</sprite>
+    <sprite>sprites\spr_proton</sprite>
+    <sprite>sprites\spr_Wall</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_temp</background>
@@ -14,6 +16,8 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_electron</object>
+    <object>objects\obj_proton</object>
+    <object>objects\obj_Wall</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\level</room>
