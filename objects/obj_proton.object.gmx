@@ -66,6 +66,6 @@ show_debug_message("Colliding with electron fairy!");
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
     <point>567,567</point>
-    <point>135,567</point>
+    <point>199,567</point>
   </PhysicsShapePoints>
 </object>
