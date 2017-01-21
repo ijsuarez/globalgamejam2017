@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-direction = image_angle;
+            <string>//image_speed = 0;
+//direction = image_angle;
+
+physics_mass_properties(phy_mass, 0, 0, phy_inertia);
+phy_fixed_rotation = true;
 </string>
           </argument>
         </arguments>
@@ -49,13 +52,16 @@ direction = image_angle;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>direction = image_angle + 90;
+            <string>//direction = image_angle + 90;
+phy_rotation = phy_rotation % 360;
 
 if keyboard_check(vk_enter) {
     image_index = 1;
 } else {
     image_index = 0;
 }
+
+show_debug_message(phy_rotation);
 </string>
           </argument>
         </arguments>
@@ -78,7 +84,8 @@ if keyboard_check(vk_enter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle -= 5;
+            <string>//image_angle -= 5;
+phy_rotation += 5;
 </string>
           </argument>
         </arguments>
@@ -101,7 +108,8 @@ if keyboard_check(vk_enter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle += 5;
+            <string>//image_angle += 5;
+phy_rotation -= 5;
 </string>
           </argument>
         </arguments>
@@ -124,8 +132,36 @@ if keyboard_check(vk_enter) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>movement = 90 / room_speed;
-speed += movement;
+            <string>//movement = 90 / room_speed;
+//speed += movement;
+
+terminal_velocity_x = 1000;
+terminal_velocity_y = 1000;
+
+magnitude = 10;
+angle = (phy_rotation - 90) * pi / 180;
+
+xforce = magnitude * cos(angle);
+yforce = magnitude * sin(angle);
+
+if (phy_linear_velocity_x &gt; -terminal_velocity_x and
+   phy_linear_velocity_x &lt; terminal_velocity_x) and
+   (phy_linear_velocity_y &gt; -terminal_velocity_y and
+   phy_linear_velocity_y &lt; terminal_velocity_y) {
+    physics_apply_force(obj_electron.x, obj_electron.y, xforce, yforce);
+} else if (phy_linear_velocity_x &lt; -terminal_velocity_x or
+   phy_linear_velocity_x &gt; terminal_velocity_x) and
+   (phy_linear_velocity_y &gt; -terminal_velocity_y and
+   phy_linear_velocity_y &lt; terminal_velocity_y) {
+    physics_apply_force(obj_electron.x, obj_electron.y, 0, yforce);
+} else if (phy_linear_velocity_x &gt; -terminal_velocity_x and
+   phy_linear_velocity_x &lt; terminal_velocity_x) and
+   (phy_linear_velocity_y &lt; -terminal_velocity_y or
+   phy_linear_velocity_y &gt; terminal_velocity_y) {
+    physics_apply_force(obj_electron.x, obj_electron.y, xforce, 0);
+} else {
+
+}
 </string>
           </argument>
         </arguments>
@@ -140,11 +176,11 @@ speed += movement;
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>0.100000001490116</PhysicsObjectLinearDamping>
   <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>0.100000001490116</PhysicsObjectFriction>
+  <PhysicsObjectFriction>1</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
   <PhysicsShapePoints>
-    <point>400,128</point>
+    <point>400,260</point>
     <point>96,398</point>
   </PhysicsShapePoints>
 </object>
