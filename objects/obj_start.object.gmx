@@ -50,8 +50,9 @@
             <kind>1</kind>
             <string>alpha += 0.05;
 if alpha &gt;= 1 {
+    part_system_clear(obj_electron_title.particle_system);
     part_emitter_destroy_all(obj_electron_title.particle_system);
-    room_goto(rm_level);
+    room_goto(rm_info);
 } else {
     alarm[0] = 1;
 }

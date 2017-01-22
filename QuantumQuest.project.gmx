@@ -20,6 +20,7 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_stars</background>
+    <background>background\bg_info</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
@@ -33,9 +34,11 @@
     <object>objects\obj_song</object>
     <object>objects\obj_asteroid</object>
     <object>objects\obj_spawner</object>
+    <object>objects\obj_info</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_intro</room>
+    <room>rooms\rm_info</room>
     <room>rooms\rm_level</room>
   </rooms>
   <help>
