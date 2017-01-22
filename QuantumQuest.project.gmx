@@ -16,6 +16,7 @@
     <sprite>sprites\spr_start</sprite>
     <sprite>sprites\spr_title</sprite>
     <sprite>sprites\spr_song</sprite>
+    <sprite>sprites\spr_asteroid</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_stars</background>
@@ -30,6 +31,8 @@
     <object>objects\obj_control</object>
     <object>objects\obj_title</object>
     <object>objects\obj_song</object>
+    <object>objects\obj_asteroid</object>
+    <object>objects\obj_spawner</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_intro</room>
