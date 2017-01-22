@@ -10,6 +10,8 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_electron</sprite>
+    <sprite>sprites\spr_proton</sprite>
+    <sprite>sprites\spr_Wall</sprite>
     <sprite>sprites\spr_start</sprite>
   </sprites>
   <backgrounds name="background">
@@ -18,6 +20,8 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_electron</object>
+    <object>objects\obj_proton</object>
+    <object>objects\obj_Wall</object>
     <object>objects\obj_start</object>
     <object>objects\obj_control</object>
   </objects>

@@ -60,9 +60,29 @@ if keyboard_check(vk_enter) {
 } else {
     image_index = 0;
 }
-
-show_debug_message(phy_rotation);
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_proton">
+      <action>
+        <libid>1</libid>
+        <id>605</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>Collision Detect</string>
           </argument>
         </arguments>
       </action>
@@ -115,7 +135,7 @@ phy_rotation -= 5;
         </arguments>
       </action>
     </event>
-    <event eventtype="5" enumb="13">
+    <event eventtype="9" enumb="13">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -132,8 +152,7 @@ phy_rotation -= 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//movement = 90 / room_speed;
-//speed += movement;
+            <string>audio_play_sound(snd_flap, 5, false);
 
 terminal_velocity_x = 1000;
 terminal_velocity_y = 1000;
@@ -159,8 +178,6 @@ if (phy_linear_velocity_x &gt; -terminal_velocity_x and
    (phy_linear_velocity_y &lt; -terminal_velocity_y or
    phy_linear_velocity_y &gt; terminal_velocity_y) {
     physics_apply_force(obj_electron.x, obj_electron.y, xforce, 0);
-} else {
-
 }
 </string>
           </argument>
