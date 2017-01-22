@@ -25,11 +25,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//image_speed = 0;
-//direction = image_angle;
-
-physics_mass_properties(phy_mass, 0, 0, phy_inertia);
+            <string>physics_mass_properties(phy_mass, 0, 0, phy_inertia);
 phy_fixed_rotation = true;
+
+particle_system = part_system_create();
+part_system_depth(particle_system, 7);
+particle = part_type_create();
+part_type_shape(particle, pt_shape_spark);
+part_type_scale(particle, 1, 1);
+part_type_size(particle, 1, 2, -0.01, 0.05);
+part_type_color2(particle, $A8E8F1, $4BADBB);
+part_type_alpha2(particle, 1, 0.75);
+part_type_speed(particle, 2, 4, -0.1, 0);
+part_type_orientation(particle, 0, 359, 10, 0, true);
+part_type_life(particle, 50, 100);
+part_type_blend(particle, true);
+
+emitter = part_emitter_create(particle_system);
 </string>
           </argument>
         </arguments>
@@ -52,13 +64,26 @@ phy_fixed_rotation = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//direction = image_angle + 90;
-phy_rotation = phy_rotation % 360;
+            <string>phy_rotation = phy_rotation % 360;
 
 if keyboard_check(vk_enter) {
     image_index = 1;
 } else {
     image_index = 0;
+}
+
+angle = (phy_rotation - 90) * pi / 180;
+
+xrange = 75 * cos(angle);
+yrange = 75 * sin(angle);
+
+part_type_direction(particle, (-phy_rotation - 90) - 30, (-phy_rotation - 90) + 30, 0, 0);
+
+part_emitter_region(particle_system, emitter, obj_electron.x - xrange - 60, obj_electron.x - xrange + 60,
+                    obj_electron.y - yrange - 60, obj_electron.y - yrange + 60, ps_shape_ellipse, ps_distr_invgaussian);
+                    
+if keyboard_check_pressed(vk_enter) {
+    part_emitter_burst(particle_system, emitter, particle, 5 + irandom(5));
 }
 </string>
           </argument>
