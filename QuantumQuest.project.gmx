@@ -21,13 +21,13 @@
   <objects name="objects">
     <object>objects\obj_electron</object>
     <object>objects\obj_proton</object>
-    <object>objects\obj_Wall</object>
+    <object>objects\obj_wall</object>
     <object>objects\obj_start</object>
     <object>objects\obj_control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_intro</room>
-    <room>rooms\level</room>
+    <room>rooms\rm_level</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
